@@ -30,7 +30,14 @@ resource "aws_instance" "ec2_instance" {
               sudo yum install -y docker
               sudo service docker start
               sudo usermod -aG docker ec2-user
-              EOF
+              sudo chmod 666 /var/run/docker.sock  # Ensure ec2-user can run docker
+
+              # Run the Docker container
+              docker stop portconnect || true
+              docker rm portconnect || true
+              docker pull harishsp1996/portconnect:latest
+              docker run -d --name portconnect -p 80:80 harishsp1996/portconnect:latest
+EOF
 
   tags = {
     Name = "Docker-EC2-Instance"
