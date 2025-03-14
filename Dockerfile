@@ -15,8 +15,8 @@ RUN npm install --f
 # Bundle app source
 COPY . .
 RUN export HOST=0.0.0.0 \
-    && export PORT=443 
+    && export PORT=80 
 
-EXPOSE 443
+EXPOSE 80
 
 CMD [ "npm", "start" ]
