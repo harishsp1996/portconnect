@@ -29,3 +29,4 @@ yarn-error.log*
 .terraform.lock.hcl
 variables.tfvars
 backend-config.hcl
+xml_to_html.py
